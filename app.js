@@ -14,7 +14,7 @@ const isPrimeNumber = (num) => {
       return isPrime2( ++num );
     }
   } else {
-    return "value too low";
+    throw new Error("Enter a value greater zero"); 
   }
 }
 
@@ -40,7 +40,7 @@ const primeNumberTableGenerator = (iterator) => {
       }
     }
   }
-  return output;
+  return output.trim();
 }
 
 module.exports = {
