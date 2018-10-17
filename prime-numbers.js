@@ -1,4 +1,7 @@
-const isPrimeNumber = (num) => {
+let isPrimeNumberADupe = (val, numToTest) => (val === getPrimeNumber(numToTest + 1) || getPrimeNumber(numToTest + 1) < val) ?
+      getPrimeNumber(val + 1) : getPrimeNumber(numToTest + 1);
+
+const getPrimeNumber = (num) => {
   if(num > 0) {
     let isPrimeNum = []; // stores the bool value for the check against the num parameter passed in
     // numToTest will decipher if a number is prime or not.
@@ -11,11 +14,13 @@ const isPrimeNumber = (num) => {
       return num;
     } else {
       // else increment the num passed in by one until the next prime number is reached
-      return isPrimeNumber( ++num );
+      return getPrimeNumber( ++num );
     }
   } else {
     throw new Error("Enter a value greater zero"); 
   }
 }
-
-module.exports = isPrimeNumber;
+module.exports = {
+  getPrimeNumber,
+  isPrimeNumberADupe
+};
