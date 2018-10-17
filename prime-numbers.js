@@ -1,5 +1,5 @@
-let isPrimeNumberADupe = (val, numToTest) => (val === getPrimeNumber(numToTest + 1) || getPrimeNumber(numToTest + 1) < val) ?
-      getPrimeNumber(val + 1) : getPrimeNumber(numToTest + 1);
+let isPrimeNumberADupe = (val, callback, numToTest) => (val === callback(numToTest + 1) || callback(numToTest + 1) < val) ?
+      callback(val + 1) : callback(numToTest + 1);
 
 const getPrimeNumber = (num) => {
   if(num > 0) {

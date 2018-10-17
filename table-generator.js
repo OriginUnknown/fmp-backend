@@ -1,15 +1,15 @@
-const { isPrimeNumberADupe } = require("./prime-numbers");
+const { isPrimeNumberADupe, getPrimeNumber } = require("./prime-numbers");
 const buildPrimeNumbersTable = (iterator) => {
   if(iterator === 0){ throw( new Error("Invalid argument: 0 is not allowed")); }
   let output = "", primeNumberForX, primeNumberForI;
   for(let i = 0; i <= iterator; i++){
-    primeNumberForI = isPrimeNumberADupe(primeNumberForI, i);
+    primeNumberForI = isPrimeNumberADupe(primeNumberForI, getPrimeNumber, i);
     primeNumberForX = 0;
     for(let x=0; x <= iterator; x++){
       if (x === 0 && i === 0){
         output += `| `;
       } else {
-        primeNumberForX = isPrimeNumberADupe(primeNumberForX, x);
+        primeNumberForX = isPrimeNumberADupe(primeNumberForX, getPrimeNumber, x);
         // for the rest of the squares
         if (x > 0 || i > 0){
           // if the loop has reached the length of the iterator i.e. the end of a table row, issue the line break
