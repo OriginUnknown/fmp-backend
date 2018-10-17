@@ -1,7 +1,6 @@
 const assert = require("chai").assert;
 const expect = require("chai").expect;
-const isPrimeNumber = require("../app").isPrimeNumber;
-const tableGenerator = require("../app").primeNumberTableGenerator;
+const { isPrimeNumber, tableGenerator } = require("../app");
 
 describe("Prime numbers tests", () => {
     describe("isPrimeNumber() method", () => {
@@ -22,8 +21,11 @@ describe("Prime numbers tests", () => {
         it("Expect tableGenerator() method to be defined", () => {
             assert.isFunction(tableGenerator);
         });
-        it("Expect tableGenerator() to return a table containing the placeholder numbers if 1 is entered as a value", () => {
-            expect(tableGenerator(1)).to.equal("|  |0,1|\r\n|1,0|1,1|");
+        it("Expect tableGenerator() to return a table containing the sum of prime numbers if N = 1 is entered as a the minimum value", () => {
+            expect(tableGenerator(1, isPrimeNumber)).to.equal("| |2|\r\n|2|4|");
+        });
+        it("Expect tableGenerator() to return a table containing the sum of prime numbers if N = 3 is entered as a value", () => {
+            expect(tableGenerator(3, isPrimeNumber)).to.equal("| |2|3|5|\r\n|2|4|6|10|\r\n|3|6|9|15|\r\n|5|10|15|25|");
         });
     });
 });
