@@ -2,6 +2,7 @@ const assert = require("chai").assert;
 const expect = require("chai").expect;
 const { getPrimeNumber, isPrimeNumberADupe } = require("../prime-numbers");
 const buildPrimeNumbersTable = require("../table-generator");
+const sinon = require("sinon");
 
 describe("Prime numbers tests", () => {
     describe("getPrimeNumber() method", () => {
@@ -20,6 +21,16 @@ describe("Prime numbers tests", () => {
     });
     describe("isPrimeNumberADupe() method", () => {
         it("Expect isPrimeNumberADupe() method to be defined", () => {
+            assert.isFunction(isPrimeNumberADupe);
+        });
+        xit("Expect isPrimeNumberADupe() method to return prime number of 5 if value is 4", () => {});
+        xit("Expect isPrimeNumberADupe() method to return prime number of 7 if value is 5", () => {
+            let callback = sinon.stub();
+            callback.withArgs(5).returns(7);
+            let prevPrimeNumber = 5;
+            expect(() => { isPrimeNumberADupe(prevPrimeNumber, callback, 5) }, 7 );
+        });
+        xit("Expect isPrimeNumberADupe() method to return prime number of 11 if value is 6", () => {
             assert.isFunction(isPrimeNumberADupe);
         });
     });

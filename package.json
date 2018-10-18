@@ -4,7 +4,9 @@
   "description": "Backend prime numbers",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "performance": "node --allow-natives-syntax ./node_modules/mocha/bin/_mocha --reporter mocha-performance ./test/**/*.js",
+    "time-test": "time mocha ./test/app.spec.js"
   },
   "keywords": [
     "Backend",
@@ -15,7 +17,9 @@
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "mocha-performance": "^0.1.1",
+    "sinon": "^7.0.0"
   },
   "dependencies": {}
 }
