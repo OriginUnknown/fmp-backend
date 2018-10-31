@@ -2,6 +2,7 @@
 
 ### Task: To generate a table of composite prime numbers when N is passed.
 The output is a table showing N+1 * N+1 summed prime numbers
+*NB: Comments about how and what the code does can be found in the develop branch of this repo.
 
 ## Environment set up
 Ensure Node is install as this is a simple node app that will output the result of N+1 to the console.
