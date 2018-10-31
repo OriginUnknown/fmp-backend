@@ -1,6 +1,6 @@
 ## Multiplication table of primes
 
-### Task: To generate a table of summed prime numbers when N is passed. 
+### Task: To generate a table of composite prime numbers when N is passed.
 The output is a table showing N+1 * N+1 summed prime numbers
 
 ## Environment set up
@@ -8,10 +8,12 @@ Ensure Node is install as this is a simple node app that will output the result 
 
 Once the app is installed, fun the following commands to generate the output Node
 ```
+> node
 let app = require('./app');
-app.generatePrimeNumberTable(n)
+app.generatePrimeNumberTable(n);
 app.renderPrimeNumberTable();
 ```
+The last three lines will run the logic and write the results into an output-file.txt which is subsequently read back when the renderPrimeNumberTable() method is run.
 
 For example, if N is 8, the output would print the following to the console:
 ```
@@ -26,17 +28,15 @@ For example, if N is 8, the output would print the following to the console:
 |19|38|57|95|133|209|247|323|361|
 ```
 
-### The good, the bad and the rest
-The good:
-- the appworks which I'm happy with.
-- some degree of a separation of concerns
+### Thought process
+#### Step 1: Generate a range of numbers from which the number of requested of primes can be harvested from
+First task was to calculate a realistic range in which to harvest the requested number of prime numbers from; the notion is that if N number of prime numbers within X range exceeds the number requested, then X range will be used as the starting point to find all prime numbers. Using the Prime Numbers Theorum of approximatation, the codebase uses the x/(log x - 1) formula to return an approximate number of prime numbers within certain exponents and compare that value with the number of primes requested. When the appropriate range is found, the respective exponent is returned as the range to begin iterating for prime numbers; not only is iteration finite but the assurance of finding enough prime numbers within that range is realistic.
 
-The downsides are:
-- the unit tests are not sufficient as they don't test all functions
-- no performance tests to validate the efficiency of the functions
-- I don't think the code is optimised at least to the point that it follows the 'Sieve of Eratosthenes'.
+#### Step 2: Apply the Sieve of Eratosthenes algorithm
+The Sieve of Eratosthenes is an age old algorithm used to filter or 'sieve' out prime numbers from a given range; with a range now defined, all that is required is a function that implements the Sieve of Eratosthenes algorithm to isolate all prime numbers from the range provided.
 
-Nevertheless the fact that the ground work has been laid for this small app as inspired me to take the next steps:
-- Learn a 'little' about Big O notation, algorithm complexity and how to calculate the most optimal way to implement said soluton. 
-- Refactor the code further and strip away the isPrimeNumberADupe method as I feell this adds to performance issues
-- More code coverage for robustness.
+#### Step 3: Select the requested number of prime numbers from the filtered list
+Once the sieve algorithm has run, all that is left is to select the requested number of primes from that list and generate a table-like view displaying the product of multiplied prime numbers.
+
+### What would I improve on
+I don't know if any of the existing test frameworks have the capability to performance test code as the current unit tests don't test for code optimisation so at the moment, there's no way to tell whether the written code is performant enough to cope with high traffic; beside jsPerf, further research is needed on my part to figure out how to performance test this code.

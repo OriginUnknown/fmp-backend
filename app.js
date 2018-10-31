@@ -1,8 +1,8 @@
-const buildPrimeNumbersTable = require("./table-generator");
+const { getPrimeNumbersArray } = require("./prime-numbers");
 const fs = require("fs");
 
 const generatePrimeNumberTable = (num) => {
-    const output = buildPrimeNumbersTable(num);
+    const output = getPrimeNumbersArray(num);
     fs.writeFile('./output-file.txt', output, 'utf-8', (err) => {
         if(err) {
             throw err;
@@ -21,7 +21,6 @@ const renderPrimeNumberTable = () => {
 }
 
 module.exports = {
-    buildPrimeNumbersTable,
     generatePrimeNumberTable,
     renderPrimeNumberTable
-}
+};
